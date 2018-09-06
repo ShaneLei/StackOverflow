@@ -6,4 +6,5 @@ const router = express.Router();
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
+const sub = express();
 module.exports = router;
