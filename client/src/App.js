@@ -13,6 +13,8 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Profile from "./components/profile/Profile";
+import Stackoverflow from "./components/stackoverflow/Stackoverflow";
+import Visualization from "./components/visualization/Visualization";
 
 import "./App.css";
 
@@ -48,6 +50,8 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/stackoverflow" component={Stackoverflow} />
+              <Route exact path="/visualization" component={Visualization} />
             </div>
             <Footer />
           </div>

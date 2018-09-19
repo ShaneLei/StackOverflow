@@ -61,7 +61,7 @@ router.post("/register", (req, res) => {
 
           // Create a time model in mongoose
           const newLastTime = new LastTimeLogin({
-            name: req.body.name
+            email: req.body.email
           });
           newLastTime
             .save()
@@ -99,7 +99,12 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User Matched
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+        const payload = {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          avatar: user.avatar
+        }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
@@ -118,6 +123,15 @@ router.post("/login", (req, res) => {
         return res.status(400).json(errors);
       }
     });
+  });
+
+  // Find lasttime by email
+  LastTimeLogin.findOne({ email }).then(lastTime => {
+    lastTime.time = new Date();
+    lastTime
+      .save()
+      .then(time => console.log(time))
+      .catch(err => console.log(err));
   });
 });
 

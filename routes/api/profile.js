@@ -7,7 +7,7 @@ const LastTimeLogin = require("../../models/LastTimeLogin");
 // @desc    Tests profile route
 // @access  Public
 router.post("/", (req, res) => {
-  LastTimeLogin.findOne({ name: req.body.name }).then(lastLog => {
+  LastTimeLogin.findOne({ email: req.body.email }).then(lastLog => {
     return res.json({ time: lastLog.time });
   });
 });

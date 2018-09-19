@@ -15,13 +15,14 @@ class Profile extends Component {
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push("/login");
     } else {
+      // Get lasttime from api
       const { user } = this.props.auth;
-      const name = {
-        name: user.name
+      const email = {
+        email: user.email
       };
 
       axios
-        .post("/api/profile", name)
+        .post("/api/profile", email)
         .then(res => {
           const { time } = res.data;
           this.setState({ lastTime: time });
@@ -39,7 +40,7 @@ class Profile extends Component {
         <div className="card ml-4" style={{ width: "18rem" }}>
           <div className="card-body">
             <h4 className="card-title">User Name</h4>
-            <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h6 className="card-subtitle mb-2 text-muted">{user.email}</h6>
             <p className="card-text">{user.name}</p>
           </div>
         </div>
@@ -47,7 +48,7 @@ class Profile extends Component {
         <div className="card ml-4" style={{ width: "18rem" }}>
           <div className="card-body">
             <h4 className="card-title">Last Login Time</h4>
-            <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h6 className="card-subtitle mb-2 text-muted">{user.email}</h6>
             <p className="card-text">{lastTime.toString()}</p>
           </div>
         </div>

@@ -63,9 +63,7 @@ class Register extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">
-                Create your DevConnector account
-              </p>
+              <p className="lead text-center">Create your MyStack account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
@@ -84,11 +82,11 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input
-                    type="email"
+                    type="account"
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.email
                     })}
-                    placeholder="Email Address"
+                    placeholder="Account Number"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}

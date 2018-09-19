@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import user_icon from "../../img/user_icon.png";
 
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
     this.props.logoutUser();
+    this.props.history.push("/login");
   }
 
   render() {
@@ -46,7 +48,8 @@ class Navbar extends Component {
             >
               <img
                 className="rounded-circle"
-                src={user.avatar}
+                //src={user.avatar}
+                src={user_icon}
                 alt={user.name}
                 style={{ width: "25px", marginRight: "5px" }}
                 title="You must have a Gravatar conneted to your email to display a image"
@@ -114,7 +117,9 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Navbar);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { logoutUser }
+  )(Navbar)
+);
