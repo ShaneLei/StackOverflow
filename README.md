@@ -1,4 +1,4 @@
-# Adapative-Web1
+# StackOverflow
 
 Deployed the web app to Heroku, here is the link:
 https://rocky-inlet-38763.herokuapp.com/
